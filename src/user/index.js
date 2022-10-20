@@ -7,6 +7,7 @@ function showProduct() {
   })
     .then(function (res) {
       productList = mapData(res.data);
+      renderProduct(productList);
     })
     .catch(function (err) {
       console.log(err);
@@ -42,15 +43,15 @@ function renderProduct(data) {
   for (var i = 0; i < data.length; i++) {
     var currentPhone = data[i];
     cardHTML += `  <div class="card">
-    <div class="card-top"><i class="fa-solid fa-mobile"></i></div>
+    <div class="card-top"></i></div>
     <div class="card-img">
       <img
-        src="${currentPhone.img.src}"
-        class="img-fluid"
+        src="${currentPhone.img}"
+        class="img-fluid img-thumbnail rounded"
         alt=""
       />
     </div>
-    <div class="card-title"><h2>${currentPhone.name}</h2></div>
+    <div class="card-title"><h3 >${currentPhone.name}</h3></div>
     <div class="card-desc">
       <p>
         ${currentPhone.screen} <br />
@@ -67,4 +68,5 @@ function renderProduct(data) {
   </div>
     `;
   }
+  document.querySelector(".product .cart").innerHTML = cardHTML;
 }
