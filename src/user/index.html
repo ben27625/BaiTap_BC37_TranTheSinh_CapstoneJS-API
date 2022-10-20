@@ -53,7 +53,27 @@
           </div>
         </nav>
       </header>
-      <section class="filter"></section>
+      <section class="filter">
+        <div class="container">
+          <select
+            class="form-select"
+            id="valueFilter"
+            aria-label="Phone select"
+          >
+            <option selected>Filter</option>
+            <option value="iphone" class="filterPhone" onchange="filterPhone()">
+              Iphone
+            </option>
+            <option
+              value="samsung"
+              class="filterPhone"
+              onchange="filterPhone()"
+            >
+              SamSung
+            </option>
+          </select>
+        </div>
+      </section>
       <section class="product">
         <div class="container">
           <div class="product-title">

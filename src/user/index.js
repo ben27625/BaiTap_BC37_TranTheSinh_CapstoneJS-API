@@ -70,3 +70,18 @@ function renderProduct(data) {
   }
   document.querySelector(".product .cart").innerHTML = cardHTML;
 }
+// 4. button filter phone
+function filterPhone() {
+  var filterResults = [];
+  var type = document.getElementById("valueFilter").value;
+  
+  for (var i = 0; i < productList.length; i++) {
+   var typePhone = productList[i].type.toLowerCase();
+
+   if(type === typePhone ) {
+    filterResults.push(productList[i]);
+   }
+  }
+
+  renderProduct(filterPhone);
+}
