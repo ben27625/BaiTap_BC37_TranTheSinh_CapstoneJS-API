@@ -74,14 +74,16 @@ function renderProduct(data) {
 function filterPhone() {
   var filterResults = [];
   var type = document.getElementById("valueFilter").value;
-  
-  for (var i = 0; i < productList.length; i++) {
-   var typePhone = productList[i].type.toLowerCase();
 
-   if(type === typePhone ) {
-    filterResults.push(productList[i]);
-   }
+  for (let i = 0; i < productList.length; i++) {
+    var typePhone = productList[i].type.toLowerCase();
+console.log(1);
+    if (type === typePhone) {
+      filterResults.push(productList[i]);
+    }
   }
 
-  renderProduct(filterPhone);
+  renderProduct(filterResults);
 }
+
+

@@ -59,18 +59,11 @@
             class="form-select"
             id="valueFilter"
             aria-label="Phone select"
+            onchange="filterPhone()"
           >
             <option selected>Filter</option>
-            <option value="iphone" class="filterPhone" onchange="filterPhone()">
-              Iphone
-            </option>
-            <option
-              value="samsung"
-              class="filterPhone"
-              onchange="filterPhone()"
-            >
-              SamSung
-            </option>
+            <option value="iphone">Iphone</option>
+            <option value="samsung">SamSung</option>
           </select>
         </div>
       </section>
