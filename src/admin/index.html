@@ -22,36 +22,132 @@
   </head>
   <body>
     <div class="wrapper">
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-          <a class="navbar-brand text-uppercase" href="#">Admin</a>
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarNavAltMarkup"
-            aria-controls="navbarNavAltMarkup"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
-              <a class="nav-link active" aria-current="page" href="#"
-                >Sản Phẩm</a
-              >
-              <a class="nav-link" href="#">Features</a>
-              <a class="nav-link" href="#">Pricing</a>
-              <a class="nav-link disabled">Disabled</a>
-            </div>
-          </div>
-        </div>
-      </nav>
+      <header class="header">
+        <div class="container">
+          <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid d-flex justify-content-between">
+              <a class="navbar-brand text-uppercase" href="#">Admin</a>
 
+              <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                  <a
+                    class="nav-link text-dark me-5"
+                    aria-current="page"
+                    href="#"
+                    >Moble Phone</a
+                  >
+                  <a class="nav-link me-5 " href="#"
+                    >Tablet</a
+                  >
+                  <a class="nav-link me-5 text-light btn btn-secondary btnCreateProduct" href="#"
+                    >Create Product</a
+                  >
+                  <!-- <a class="nav-link me-5" href="#">Pricing</a> -->
+                  <!-- <a class="nav-link disabled me-5">Disabled</a> -->
+                </div>
+              </div>
+            </div>
+          </nav>
+        </div>
+      </header>
+
+    <section class="infoProduct">
       <div class="container">
-        <table class="table table-hover"></table>
+        <div class="input-group mt-3 px-1">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Click here to find !"
+            aria-label="Recipient's username"
+            aria-describedby="basic-addon2"
+          />
+          <span class="input-group-text" id="basic-addon2">Search Product</span>
+        </div>
+        <table class="table mt-2">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Price</th>
+              <th scope="col">Screen</th>
+              <th scope="col">BackCamera</th>
+              <th scope="col">FrontCamera</th>
+              <th scope="col">Link img</th>
+              <th scope="col">Description</th>
+              <th scope="col">Type</th>
+              <th scope="col">Tùy chọn</th>
+            </tr>
+          </thead>
+          <tbody id="renderProduct"></tbody>
+        </table>
       </div>
+    </section>
+      <section class="fromCreate d-none">
+        <div class="fromTitle">
+          <h3 class="text-center">Thông tin sản phẩm</h3>
+        </div>
+        <div class="container">
+          <input
+            class="form-control mt-2"
+            type="text"
+            placeholder="Name :"
+            aria-label=".form-control example"
+          />
+          <span id="notificationName"></span>
+          <input
+            class="form-control mt-2"
+            type="text"
+            placeholder="Price :"
+            aria-label=".form-control example"
+          />
+          <span id="notificationPrice"></span>
+          <input
+            class="form-control mt-2"
+            type="text"
+            placeholder="Screen :"
+            aria-label="default input example"
+          />
+          <span id="notificationScreen"></span>
+          <input
+            class="form-control mt-2"
+            type="text"
+            placeholder="BackCamera :"
+            aria-label=".form-control-sm example"
+          />
+          <span id="notificationBackCamera"></span>
+
+          <input
+            class="form-control mt-2"
+            type="text"
+            placeholder="FrontCamera :"
+            aria-label=".form-control example"
+          />
+          <span id="notificationFrontCamera"></span>
+
+          <input
+            class="form-control mt-2"
+            type="text"
+            placeholder="Link img :"
+            aria-label="default input example"
+          />
+          <span id="notificationLink"></span>
+
+          <input
+            class="form-control mt-2"
+            type="text"
+            placeholder="Description :"
+            aria-label=".form-control-sm example"
+          />
+          <span id="notificationDesc"></span>
+
+          <input
+            class="form-control mt-2"
+            type="text"
+            placeholder="Type :"
+            aria-label=".form-control example"
+          />
+          <span id="notificationType"></span>
+        </div>
+      </section>
     </div>
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.1.2/axios.min.js"

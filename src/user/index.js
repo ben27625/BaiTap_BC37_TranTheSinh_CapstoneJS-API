@@ -99,3 +99,5 @@ window.onload = function () {
   console.log(document.querySelector("#purchase-addCart"));
   document.querySelector("#purchase-addCart").addEventListener("click", addCart);
 };
+
+
