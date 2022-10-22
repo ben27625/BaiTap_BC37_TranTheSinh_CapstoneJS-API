@@ -14,10 +14,6 @@ function showProduct() {
     });
 }
 
-window.onload = function () {
-  showProduct();
-};
-
 function mapData(data) {
   var results = [];
   for (var i = 0; i < data.length; i++) {
@@ -51,7 +47,7 @@ function renderProduct(data) {
         alt=""
       />
     </div>
-    <div class="card-title"><h3 >${currentPhone.name}</h3></div>
+    <div class="card-title  "><h3 class= "text-center" >${currentPhone.name}</h3></div>
     <div class="card-desc">
       <p>
         ${currentPhone.screen} <br />
@@ -63,6 +59,9 @@ function renderProduct(data) {
     <div class="purchase">
       <button class="purchase-buy btn btn-danger rounded-pill">
         Buy
+      </button>
+      <button class="purchase-add btn btn-danger rounded-pill ms-4" id="purchase-addCart" >
+        Add Cart
       </button>
     </div>
   </div>
@@ -77,7 +76,7 @@ function filterPhone() {
 
   for (let i = 0; i < productList.length; i++) {
     var typePhone = productList[i].type.toLowerCase();
-console.log(1);
+    console.log(1);
     if (type === typePhone) {
       filterResults.push(productList[i]);
     }
@@ -86,4 +85,17 @@ console.log(1);
   renderProduct(filterResults);
 }
 
+// 5. add cart items
 
+function addCart() {
+  // display quantity number
+  var element = document.getElementById("quantityCart");
+ 
+  
+}
+
+window.onload = function () {
+  showProduct();
+  console.log(document.querySelector("#purchase-addCart"));
+  document.querySelector("#purchase-addCart").addEventListener("click", addCart);
+};

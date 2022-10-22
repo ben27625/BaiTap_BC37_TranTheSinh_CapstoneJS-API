@@ -22,7 +22,7 @@
   </head>
   <body>
     <div class="wrapper">
-      <header class="header bg-danger px-5">
+      <header class="header bg-danger px-5 position-fixed top-0 start-0 end-0 zindex">
         <nav class="navbar navbar-light">
           <div class="container-fluid">
             <a class="navbar-brand text-light text-uppercase">Smart Mobile</a>
@@ -45,9 +45,11 @@
                 <i class="fa-regular fa-user"></i>
               </button>
               <button
-                class="cart border border-light mx-2 px-3 rounded bg-danger"
+                class="cart border border-light mx-2 px-3 rounded bg-danger text-light d-flex justify-content-center align-items-center"
+                onclick="showCart()"
               >
-                <i class="fa-sharp fa-solid fa-cart-shopping text-light"></i>
+                <i class="fa-sharp fa-solid fa-cart-shopping"></i>
+                <span id="quantityCart " class="ms-1 d-none">0</span>
               </button>
             </form>
           </div>
@@ -110,6 +112,12 @@
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/js/bootstrap.min.js"
       integrity="sha512-OvBgP9A2JBgiRad/mM36mkzXSXaJE9BEIENnVEmeZdITvwT09xnxLtT4twkCa8m/loMbPHsvPl0T8lRGVBwjlQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"
+      integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     ></script>

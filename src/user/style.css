@@ -1,3 +1,13 @@
+.header {
+   z-index: 1010;
+   height: 70px;
+   
+}
+
+.active {
+    display: inline;
+}
+
 .product .card {
     width: 22%;
     height: 500px;
@@ -56,3 +66,5 @@
 .filter {
     margin-top: 20px;
 }
+
+
