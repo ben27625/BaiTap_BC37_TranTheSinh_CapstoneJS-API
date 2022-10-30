@@ -27,7 +27,8 @@ function mapData(data) {
       product.frontCamera,
       product.img,
       product.desc,
-      product.type
+      product.type,
+      product.id
     );
     results.push(newProduct);
   }
@@ -60,7 +61,7 @@ function renderProduct(data) {
       <button class="purchase-buy btn btn-danger rounded-pill">
         Buy
       </button>
-      <button class="purchase-add btn btn-danger rounded-pill ms-4" id="purchase-addCart" >
+      <button class="purchase-add btn btn-danger rounded-pill ms-4" id="purchase-addCart" onclick="addCart(${currentPhone.id})">
         Add Cart
       </button>
     </div>
@@ -85,19 +86,48 @@ function filterPhone() {
   renderProduct(filterResults);
 }
 
-// 5. add cart items
+// toggle cart
+function toggleCart() {
+  document.querySelector(".addCart").classList.toggle("d-none");
+}
 
-function addCart() {
+// findById
+function findById(id) {}
+
+// 5. add cart items
+var carts = [];
+function addCart(id) {
   // display quantity number
-  var element = document.getElementById("quantityCart");
- 
-  
+  console.log(productList);
+  // var element = document.getElementById("quantityCart");
+  // findById
+  var product;
+  productList.forEach(function (element) {
+    if (element.id == id) return (product = element);
+    // return console.log("err");
+  });
+  carts.push(product);
+  console.log(carts);
+  renderCart(carts);
+}
+
+function renderCart(data) {
+  productHtml = "";
+  data.forEach(function (currentProduct) {
+    productHtml += `
+    <div class="cartContent">
+    <div class="cardProduct">Trần Thế Sinh</div>
+    <div class="cardPrice">10000</div>
+    <div class="quantity">1</div>
+  </div>`;
+  });
+
+  document.querySelector(".addCart").innerHTML = productHtml;
 }
 
 window.onload = function () {
   showProduct();
-  console.log(document.querySelector("#purchase-addCart"));
-  document.querySelector("#purchase-addCart").addEventListener("click", addCart);
+  // console.log(document.querySelector("#purchase-addCart"));
+  // document.querySelector("#purchase-addCart").addEventListener("click", addCart);
+  document.getElementById("toggleCart").addEventListener("click", toggleCart);
 };
-
-

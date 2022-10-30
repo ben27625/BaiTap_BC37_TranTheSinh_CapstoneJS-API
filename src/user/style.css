@@ -64,7 +64,23 @@
 }
 
 .filter {
-    margin-top: 20px;
+    margin-top: 80px;
+}
+
+
+.addCart {
+    width: 30%;
+    background-color: rgb(127, 152, 167);
+    z-index: 1010;
+    top: 70px;
+    right: 2px;
+    
+
+}
+
+.cartContent {
+    display: flex;
+    justify-content: space-between;
 }
 
 
