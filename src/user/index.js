@@ -91,24 +91,47 @@ function toggleCart() {
   document.querySelector(".addCart").classList.toggle("d-none");
 }
 
-// findById
-function findById(id) {}
-
 // 5. add cart items
 var carts = [];
 function addCart(id) {
-  // display quantity number
-  console.log(productList);
-  // var element = document.getElementById("quantityCart");
-  // findById
-  var product;
+  var productCart;
   productList.forEach(function (element) {
-    if (element.id == id) return (product = element);
-    // return console.log("err");
+    if (element.id == id) return (productCart = element);
   });
-  carts.push(product);
-  console.log(carts);
+
+  // 6. 
+  var cartItem = {
+    product: {
+      id: productCart.id,
+      price: productCart.price,
+      name: productCart.name,
+    },
+    quantity: 1,
+  };
+
+  checkCarts(cartItem);
+
   renderCart(carts);
+  console.log(carts);
+}
+
+function checkCarts(cartItem) {
+  // 7.check yes or no
+  if (carts.length === 0) {
+    console.log(1);
+    return carts.push(cartItem);
+  }
+
+  carts.forEach(function (item) {
+    if (item.product.id === cartItem.product.id) {
+      console.log(2);
+      return (item.quantity += 1);
+    } else {
+      console.log(3);
+      return carts.push(cartItem);
+    }
+  });
+  
 }
 
 function renderCart(data) {
@@ -116,9 +139,9 @@ function renderCart(data) {
   data.forEach(function (currentProduct) {
     productHtml += `
     <div class="cartContent">
-    <div class="cardProduct">Trần Thế Sinh</div>
-    <div class="cardPrice">10000</div>
-    <div class="quantity">1</div>
+    <div class="cardProduct">${currentProduct.product.name}</div>
+    <div class="cardPrice">${currentProduct.product.price}</div>
+    <div class="quantity">${currentProduct.quantity}</div>
   </div>`;
   });
 
