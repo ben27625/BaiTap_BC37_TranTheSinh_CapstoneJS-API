@@ -51,6 +51,11 @@
                 <i class="fa-sharp fa-solid fa-cart-shopping"></i>
                 <span id="quantityCart " class="ms-1 d-none">0</span>
               </span>
+              <a
+                href="../admin/index.html"
+                class="fs-5 text-light text-decoration-none"
+                >Admin</a
+              >
             </form>
           </div>
           <div class="addCart position-fixed d-none">
@@ -63,23 +68,19 @@
                   <th>Tùy chọn</th>
                 </tr>
               </thead>
-              <tbody id="cartItem">
-                
-              </tbody>
+              <tbody id="cartItem"></tbody>
             </table>
             <div id="checkOut">
               <tr>
                 <p>Quantity : <span id="totalQuantity"></span></p>
                 <p>Price : <span id="totalPrice"></span></p>
                 <td>
-                  <button class="btn btn-primary" id="btnCheckOut" >
+                  <button class="btn btn-primary" id="btnCheckOut">
                     Check Out
                   </button>
                 </td>
               </tr>
             </div>
-
-           
           </div>
         </nav>
       </header>
