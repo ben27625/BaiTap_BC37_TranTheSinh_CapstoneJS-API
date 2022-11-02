@@ -94,17 +94,17 @@ function toggleCart() {
 // 5. add cart items
 var carts = [];
 function addCart(id) {
-  var productCart;
-  productList.forEach(function (element) {
-    if (element.id == id) return (productCart = element);
+  var productItem;
+  productList.forEach(function (product) {
+    if (product.id == id) return (productItem = product);
   });
 
-  // 6. 
+  // 6.
   var cartItem = {
     product: {
-      id: productCart.id,
-      price: productCart.price,
-      name: productCart.name,
+      id: productItem.id,
+      price: productItem.price,
+      name: productItem.name,
     },
     quantity: 1,
   };
@@ -112,45 +112,148 @@ function addCart(id) {
   checkCarts(cartItem);
 
   renderCart(carts);
-  console.log(carts);
+
+  caclPrice();
+  setCart();
 }
 
 function checkCarts(cartItem) {
   // 7.check yes or no
-  if (carts.length === 0) {
-    console.log(1);
-    return carts.push(cartItem);
-  }
 
-  carts.forEach(function (item) {
-    if (item.product.id === cartItem.product.id) {
-      console.log(2);
-      return (item.quantity += 1);
-    } else {
-      console.log(3);
-      return carts.push(cartItem);
-    }
+  let foundItem = carts.find((item) => {
+    return item.product.id == cartItem.product.id;
   });
-  
+
+  console.log(foundItem);
+  if (foundItem) {
+    foundItem.quantity++;
+  } else {
+    carts.push(cartItem);
+  }
 }
 
+// 8.
 function renderCart(data) {
   productHtml = "";
   data.forEach(function (currentProduct) {
     productHtml += `
-    <div class="cartContent">
-    <div class="cardProduct">${currentProduct.product.name}</div>
-    <div class="cardPrice">${currentProduct.product.price}</div>
-    <div class="quantity">${currentProduct.quantity}</div>
-  </div>`;
+    <tr>
+                  <td>${currentProduct.product.name}</td>
+                  <td>
+                    <span class="" id="quantityMinus" onclick="decrease(${currentProduct.product.id})">-</span>
+                    <input type="number" value="${currentProduct.quantity}" id="quantityNumber">
+                    <span  class="" id="quantityPlus" onclick="increase(${currentProduct.product.id})">+</span>
+                  </td>
+                  <td>${currentProduct.product.price}</td>
+                  <td><button class="btn btn-danger" onclick="removeCart(${currentProduct.product.id})" >Remove</button></td>
+
+                </tr>`;
   });
 
-  document.querySelector(".addCart").innerHTML = productHtml;
+  document.querySelector("#cartItem").innerHTML = productHtml;
 }
+
+// 9 . increase , decrease
+
+function increase(id) {
+  let value = parseInt(document.getElementById("quantityNumber").value, 10);
+  console.log(value);
+
+  value = isNaN(value) ? 0 : value;
+  value++;
+  document.getElementById("quantityNumber").value = value;
+
+  carts.forEach((element) => {
+    if (element.product.id == id) {
+      return element.quantity++;
+    }
+  });
+  caclPrice();
+  setCart();
+
+  return renderCart(carts);
+}
+
+function decrease(id) {
+  let value = parseInt(document.getElementById("quantityNumber").value);
+  console.log(value);
+  value = isNaN(value) ? 0 : value;
+  value < 1 ? (value = 1) : "";
+  value--;
+  document.getElementById("quantityNumber").value = value;
+
+  carts.forEach((element) => {
+    if (element.product.id == id) {
+      return element.quantity--;
+    }
+  });
+  caclPrice();
+  setCart();
+
+  return renderCart(carts);
+}
+
+//  10 cacl in carts
+function caclPrice() {
+  let totalQuantity = 0;
+  let totalPrice = 0;
+  carts.forEach((item) => {
+    totalQuantity += item.quantity;
+    totalPrice += item.product.price * item.quantity;
+  });
+
+  document.getElementById("totalQuantity").innerHTML = totalQuantity;
+  document.getElementById("totalPrice").innerHTML = totalPrice;
+}
+
+// 11, Lưu carts localstorage
+function setCart() {
+  var cartJSON = JSON.stringify(carts);
+  localStorage.setItem("SL", cartJSON);
+}
+
+function getCart() {
+  let cartJSON = localStorage.getItem("SL");
+
+  if (!cartJSON) return;
+
+  carts = JSON.parse(cartJSON);
+  renderCart(carts);
+  caclPrice();
+}
+
+// function mapCart() {
+//   let result = [];
+
+// }
+
+// 12 press check out , clear cart , set arr empty
+
+function checkOut() {
+  carts = [];
+  renderCart(carts);
+  caclPrice();
+}
+
+// 13 remove from cart
+function removeCart(id) {
+ let index =  carts.findIndex((item) => item.product.id == id );
+console.log(index);
+
+  carts.splice(index, 1);
+  renderCart(carts);
+  caclPrice();
+  setCart();
+
+}
+
+
 
 window.onload = function () {
   showProduct();
+  getCart();
   // console.log(document.querySelector("#purchase-addCart"));
   // document.querySelector("#purchase-addCart").addEventListener("click", addCart);
   document.getElementById("toggleCart").addEventListener("click", toggleCart);
-};
+  document.getElementById("btnCheckOut").addEventListener("click", checkOut);
+}
