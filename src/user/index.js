@@ -233,21 +233,19 @@ function checkOut() {
   carts = [];
   renderCart(carts);
   caclPrice();
+  setCart();
 }
 
 // 13 remove from cart
 function removeCart(id) {
- let index =  carts.findIndex((item) => item.product.id == id );
-console.log(index);
+  let index = carts.findIndex((item) => item.product.id == id);
+  console.log(index);
 
   carts.splice(index, 1);
   renderCart(carts);
   caclPrice();
   setCart();
-
 }
-
-
 
 window.onload = function () {
   showProduct();
@@ -256,4 +254,4 @@ window.onload = function () {
   // document.querySelector("#purchase-addCart").addEventListener("click", addCart);
   document.getElementById("toggleCart").addEventListener("click", toggleCart);
   document.getElementById("btnCheckOut").addEventListener("click", checkOut);
-}
+};
