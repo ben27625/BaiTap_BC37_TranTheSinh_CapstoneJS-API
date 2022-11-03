@@ -73,6 +73,7 @@ async function deleteProduct(id) {
     });
     console.log(res);
     showProduct();
+    alert("Xóa thành công !!");
   } catch (err) {
     console.log(err);
   }
@@ -114,9 +115,10 @@ function showFromUpdate(id) {
       document.getElementById("btnCreateProduct").classList.add("d-none");
       document.getElementById("form-id").classList.remove("d-none");
       document.getElementById("form-id").disabled = true;
+     
     })
     .catch(function (err) {
-      console.log(err);
+      alert(err);
     });
 }
 
@@ -162,8 +164,8 @@ function updateProduct() {
     });
 
   document.getElementById("btnReset").click();
- 
-    alert("Update thành công !");
+
+  alert("Update thành công !");
 }
 
 // thêm sản phẩm
@@ -215,9 +217,8 @@ function createProduct() {
     .catch(function (err) {
       console.log(err);
     });
-    document.getElementById("btnReset").click();
-    alert("Thêm thành công !");
-
+  document.getElementById("btnReset").click();
+  alert("Thêm thành công !");
 }
 
 // validate
