@@ -162,6 +162,8 @@ function updateProduct() {
     });
 
   document.getElementById("btnReset").click();
+ 
+    alert("Update thành công !");
 }
 
 // thêm sản phẩm
@@ -213,6 +215,9 @@ function createProduct() {
     .catch(function (err) {
       console.log(err);
     });
+    document.getElementById("btnReset").click();
+    alert("Thêm thành công !");
+
 }
 
 // validate
